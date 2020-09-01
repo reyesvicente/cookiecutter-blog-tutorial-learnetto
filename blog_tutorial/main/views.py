@@ -41,7 +41,7 @@ class BlogDetailView(DetailView):
 
 def blog_category(request, category):
     posts = Post.objects.filter(
-        categories__title__contains=category
+        categories__slug__contains=category
     )
     context = {
         "category": category,

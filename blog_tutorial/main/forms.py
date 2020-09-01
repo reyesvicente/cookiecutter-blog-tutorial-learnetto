@@ -18,4 +18,4 @@ class ContactForm(forms.Form):
 
 	name = forms.CharField(max_length=100, label="Your name", widget=forms.TextInput(attrs={'class': 'col', 'placeholder':'Vicente Reyes'}))
 	email = forms.CharField(label="Your email", widget=forms.EmailInput(attrs={'class': 'col', 'placeholder':'highcenbugtv@vgreyes.com'}))
-	message = forms.CharField(max_length=500, label="Your inquiry", widget=forms.Textarea(attrs={'placeholder':'I want need to...'}))
+	message = forms.CharField(max_length=500, label="Your inquiry", widget=forms.Textarea(attrs={'placeholder':'I need to...'}))

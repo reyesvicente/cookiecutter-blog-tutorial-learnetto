@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static humanize i18n %}
+<title>{% block title %}Blog: {{ post.title }} | VGR - Blog Tutorial{% endblock title %}</title>
 {% block content %}
 <header class="container">
 	<h1 class="text-center mt-5 mb-3 text-dark">{{ post.title }}</h1>
@@ -9,7 +10,7 @@
 	<div class="text-center pb-3 font-weight-bold text-secondary">
 		{% for category in post.categories.all %}
 			<span class="p-2">
-				<a href="{% url 'categories' category.title %}">
+				<a href="{% url 'categories' category.slug %}">
 					#{{ category.title }}
 				</a>
 			</span>
