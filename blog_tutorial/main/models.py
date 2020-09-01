@@ -3,9 +3,9 @@ from django.utils.translation import ugettext_lazy as _
 
 
 STATUS_CHOICES = [
-    ("d", "draft"),
-    ("p", "published"),
-    ("w", "withdrawn"),
+    ("draft", "Draft"),
+    ("published", "Published"),
+    ("withdrawn", "Withdrawn"),
 ]
 
 
@@ -69,7 +69,7 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now_add=True)
     categories = models.ManyToManyField(Category, related_name="posts")
-    status = models.CharField(max_length=1, choices=STATUS_CHOICES, default="d")
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="draft")
 
     class Meta:
         """ Meta for the naming in the django admin that
