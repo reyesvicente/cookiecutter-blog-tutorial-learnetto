@@ -11,6 +11,8 @@ from .models import (
     Contact,
 )
 
+from .forms import ContactForm
+
 
 class ProjectListView(ListView):
     model = Project
