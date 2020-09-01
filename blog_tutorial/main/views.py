@@ -3,43 +3,45 @@ from django.shortcuts import render
 from django.views.generic import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import FormView
+from django.views.generic import TemplateView
 
-from .models import (
-    Post,
-    Category,
-    Project,
-    Contact,
+from blog_tutorial.main.models import (
+	Post,
+	Category,
+	Project,
+	Contact,
 )
 
-from .forms import ContactForm
-
+from blog_tutorial.main.forms import ContactForm
 
 class ProjectListView(ListView):
-    model = Project
-    paginate_by = 5
-    template_name = 'pages/projects.html'
-    context_object_name = 'projects'
-    ordering = ['-delivery']
+	model = Project
+	paginate_by = 5
+	template_name = 'pages/projects.html'
+	context_object_name = 'projects'
+
+
+class ProjectDetailView(DetailView):
+	model = Project
+	template_name = 'pages/project_details.html'
 
 
 class BlogListView(ListView):
-    model = Post
-    paginate_by = 20
-    template_name = 'pages/blog.html'
-    context_object_name = 'posts'
-    ordering = ['-created']
+	model = Post
+	paginate_by = 4
+	template_name = 'pages/home.html'
+	context_object_name = 'posts'
+	ordering = ['-created_on']
 
 
 class BlogDetailView(DetailView):
-    model = Post
-    template_name = 'pages/post_detail.html'
+	model = Post
+	template_name = 'pages/post_detail.html'
 
 
 def blog_category(request, category):
     posts = Post.objects.filter(
         categories__title__contains=category
-    ).order_by(
-        '-created'
     )
     context = {
         "category": category,
@@ -49,22 +51,26 @@ def blog_category(request, category):
 
 
 class ContactFormView(FormView):
-    template_name = 'pages/contact.html'
-    form_class = ContactForm
-    success_url = 'contact'
+	template_name = 'pages/contact.html'
+	form_class = ContactForm
+	success_url = '/contact/'
 
-    def form_valid(self, form):
-        name = form.cleaned_data['name']
-        email = form.cleaned_data['email']
-        message = form.cleaned_data['message']
+	def form_valid(self, form):
+		name = form.cleaned_data['name']
+		email = form.cleaned_data['email']
+		message = form.cleaned_data['message']
 
-        m = Contact(
-            name=name,
-            email=email,
-            message=message,
-        )
-        m.save()
+		m = Contact(
+			name=name,
+			email=email,
+			message=message,
+		)
+		m.save()
 
-        messages.success(self.request, 'Your message has been sent.')
+		messages.success(self.request, 'Your message has been sent.')
 
-        return super().form_valid(form)
+		return super().form_valid(form)
+
+
+class AboutView(TemplateView):
+	template_name = 'pages/about.html'

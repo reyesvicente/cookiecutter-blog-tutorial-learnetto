@@ -20,8 +20,8 @@ class ProjectAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'slug')
-    search_fields = ('slug',)
+	list_display = ['title',]
+	prepopulated_fields = {"slug": ("title",)}
 
 
 @admin.register(Post)
@@ -38,7 +38,6 @@ class PostAdmin(admin.ModelAdmin):
         'status',
     )
     list_filter = ('created_on', 'updated_on')
-    raw_id_fields = ('categories',)
     search_fields = ('slug',)
 
 
