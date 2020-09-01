@@ -7,8 +7,8 @@ from django.views.generic.edit import FormView
 from .models import (
     Post,
     Category,
+    Project,
     Contact,
-		Project,
 )
 
 
