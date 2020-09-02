@@ -1,89 +1,104 @@
-Blog Tutorial
-=============
+# Creating a blog with Cookiecutter-Django & deploying it to Heroku
 
-Learn to jumpstart a production-ready blog using the Cookiecutter-Django framework and how to deploy it to Heroku
+> Learn to jumpstart a production-ready blog using the Cookiecutter-Django framework and how to deploy it to Heroku
 
-.. image:: https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg
-     :target: https://github.com/pydanny/cookiecutter-django/
-     :alt: Built with Cookiecutter Django
-.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
-     :target: https://github.com/ambv/black
-     :alt: Black code style
+![screenshot](./screenshots/blog-home.png)
 
+Additional description about the project and its features.
 
-:License: MIT
+## Built With
 
+- Python,
+- Cookiecutter-Django,
+- Bootstrap 4.5, Bootstwatch Darkly
 
-Settings
---------
+## Live Demo
 
-Moved to settings_.
-
-.. _settings: http://cookiecutter-django.readthedocs.io/en/latest/settings.html
-
-Basic Commands
---------------
-
-Setting Up Your Users
-^^^^^^^^^^^^^^^^^^^^^
-
-* To create a **normal user account**, just go to Sign Up and fill out the form. Once you submit it, you'll see a "Verify Your E-mail Address" page. Go to your console to see a simulated email verification message. Copy the link into your browser. Now the user's email should be verified and ready to go.
-
-* To create an **superuser account**, use this command::
-
-    $ python manage.py createsuperuser
-
-For convenience, you can keep your normal user logged in on Chrome and your superuser logged in on Firefox (or similar), so that you can see how the site behaves for both kinds of users.
-
-Type checks
-^^^^^^^^^^^
-
-Running type checks with mypy:
-
-::
-
-  $ mypy blog_tutorial
-
-Test coverage
-^^^^^^^^^^^^^
-
-To run the tests, check your test coverage, and generate an HTML coverage report::
-
-    $ coverage run -m pytest
-    $ coverage html
-    $ open htmlcov/index.html
-
-Running tests with py.test
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-::
-
-  $ pytest
-
-Live reloading and Sass CSS compilation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Moved to `Live reloading and SASS compilation`_.
-
-.. _`Live reloading and SASS compilation`: http://cookiecutter-django.readthedocs.io/en/latest/live-reloading-and-sass-compilation.html
+[Live Demo Link](https://quiet-citadel-68595.herokuapp.com/)
 
 
+## Getting Started
+
+**This is an example of how you may give instructions on setting up your project locally.**
+**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
 
 
+To get a local copy up and running follow these simple example steps.
 
-Deployment
-----------
+### Prerequisites
 
-The following details how to deploy this application.
-
-
+Python 3.8
+virtual environment
+PostgreSQL.
+Redis, if using Celery
+Cookiecutter
 Heroku
-^^^^^^
+AWS/GCP for static assets
+Git
 
-See detailed `cookiecutter-django Heroku documentation`_.
+### Setup
 
-.. _`cookiecutter-django Heroku documentation`: http://cookiecutter-django.readthedocs.io/en/latest/deployment-on-heroku.html
+Install cookiecutter
+
+`$ python -m pip install "cookiecutter>=1.7.2"`
+
+Install cookiecutter-django
+
+`$ cookiecutter https://github.com/pydanny/cookiecutter-django`
+
+Create a virtual environment
+
+`$ virtualenv <name_of_environment>`
+
+Activate/Run PostgreSQL
+
+### Usage
+
+`$ cookiecutter https://github.com/pydanny/cookiecutter-django` - run the cookiecutter-django command
+`$ source <name_of_environment>/bin/activate` - create a virtual environment
+`$ python -m pip install -r requirements/local.txt` - install local dev dependencies
+`$ createdb <what you have entered as the project_slug at setup stage> -U postgres --password <password>` - create a postgreSQL db
+`$ export DATABASE_URL=postgres://postgres:<password>@127.0.0.1:5432/<DB name given to createdb>` - export database_url
+
+### Run tests
+
+For unit tests, run:
+
+`$ python manage.py test`
+
+### Deployment
+
+Complete deployment instructions are at: https://cookiecutter-django.readthedocs.io/en/latest/deployment-on-heroku.html
 
 
+## Authors
+
+👤 **Vicente G. Reyes**
+
+- Github: [@reyesvicente](https://github.com/reyesvicente)
+- Twitter: [@highcenburg](https://twitter.com/highcenburg)
+- Facebook: [highcenbugtv](https://facebook.com/highcenbugtv)
 
 
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Cookiecutter
+- Cookiecutter-django
+- Learnetto
+- Bootswatch
+
+## 📝 License
+
+This project is [MIT](https://github.com/reyesvicente/cookiecutter-blog-tutorial-learnetto/blob/master/LICENSE) licensed.
+
+https://www.buymeacoffee.com/highcenburg
